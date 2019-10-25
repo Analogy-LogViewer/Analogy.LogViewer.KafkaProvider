@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/Analogy.LogViewer.KafkaProvider/v16
+/Analogy.Implementation.KafkaProvider/bin/Debug/netstandard2.0
+/Analogy.Implementation.KafkaProvider/obj

@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Analogy.LogViewer.KafkaProvider</id>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <title>Analogy Log Viewer Kafka Provider</title>
     <authors>Lior Banai</authors>
     <owners>Lior Banai</owners>
     <license type="expression">MIT</license>
-    <projectUrl>https://github.com/philips-software/logviewer/</projectUrl>
+    <projectUrl>https://github.com/LiorBanai/Analogy.LogViewer.KafkaProvider</projectUrl>
     <icon>icon.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Analogy Log Viewer Kafka Provider</description>
@@ -16,7 +16,7 @@
     <tags></tags>
 	<dependencies>
     <group targetFramework="netstandard2.0">    
-		<dependency id="Analogy.LogViewer.Interfaces" version="2.1.1" />
+		<dependency id="Analogy.LogViewer.Interfaces" version="2.1.2" />
 		<dependency id="Confluent.Kafka" version="1.2.1" />
     </group>
 </dependencies>

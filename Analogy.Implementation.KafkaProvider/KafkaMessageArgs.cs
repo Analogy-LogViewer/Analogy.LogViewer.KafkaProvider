@@ -5,11 +5,11 @@ using Analogy.Interfaces;
 
 namespace Analogy.Implementation.KafkaProvider
 {
-    public class AnalogyKafkaLogMessageArgs : EventArgs
+    public class KafkaMessageArgs<T> : EventArgs
     {
-        public AnalogyLogMessage Message { get; private set; }
+        public T Message { get; private set; }
 
-        public AnalogyKafkaLogMessageArgs(AnalogyLogMessage msg)
+        public KafkaMessageArgs(T msg)
         {
             Message = msg;
         }

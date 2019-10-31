@@ -8,25 +8,27 @@ using Confluent.Kafka;
 
 namespace Analogy.Implementation.KafkaProvider
 {
-    public class KafkaConsumer
+    public class KafkaConsumer<T>
     {
         private string KafkaServerURL { get; set; }
         private string Topic { get; set; }
         private ConsumerConfig Config { get; set; }
-        public event EventHandler<AnalogyKafkaLogMessageArgs> OnMessageReady;
-        public BlockingCollectionQueue<AnalogyLogMessage> Queue;
-        private readonly AnalogyKafkaSerializer serializer;
+        public event EventHandler<KafkaMessageArgs<T>> OnMessageReady;
+        public BlockingCollectionQueue<T> Queue;
+        public BlockingCollectionQueue<string> ErrorsQueue;
+        private readonly KafkaSerializer<T> serializer;
         private readonly CancellationTokenSource cts;
-        public KafkaConsumer(string kafkaServerURL, string topic)
+        public KafkaConsumer(string groupId, string kafkaServerURL, string topic)
         {
-            serializer = new AnalogyKafkaSerializer();
+            serializer = new KafkaSerializer<T>();
             cts = new CancellationTokenSource();
-            Queue = new BlockingCollectionQueue<AnalogyLogMessage>();
+            Queue = new BlockingCollectionQueue<T>();
+            ErrorsQueue = new BlockingCollectionQueue<string>();
             KafkaServerURL = kafkaServerURL;
             Topic = topic;
             Config = new ConsumerConfig
             {
-                GroupId = "AnalogyKafkaLogin",
+                GroupId = groupId,
                 BootstrapServers = KafkaServerURL,
                 AutoOffsetReset = AutoOffsetReset.Earliest
             };
@@ -34,11 +36,11 @@ namespace Analogy.Implementation.KafkaProvider
 
         }
 
-        public Task StartConsuming()
+        private Task ConsumeAsync()
         {
             return Task.Factory.StartNew(() =>
              {
-                 using (var c = new ConsumerBuilder<Ignore, AnalogyLogMessage>(Config).SetValueDeserializer(serializer).Build())
+                 using (var c = new ConsumerBuilder<Ignore, T>(Config).SetValueDeserializer(serializer).Build())
                  {
                      c.Subscribe(Topic);
                      try
@@ -52,13 +54,12 @@ namespace Analogy.Implementation.KafkaProvider
                              }
                              catch (TaskCanceledException ce)
                              {
-                                 Queue.Enqueue(new AnalogyLogMessage($"Consuming Canceled", AnalogyLogLevel.AnalogyInformation, AnalogyLogClass.General, Environment.MachineName));
                                  Queue.CompleteAdding();
                                  return;
                              }
                              catch (ConsumeException e)
                              {
-                                 Queue.Enqueue(new AnalogyLogMessage($"Error occurred: {e.Error.Reason}", AnalogyLogLevel.Critical, AnalogyLogClass.General, Environment.MachineName));
+                                 ErrorsQueue.Enqueue($"Error occurred: {e.Error.Reason}");
                              }
                          }
                      }
@@ -72,20 +73,21 @@ namespace Analogy.Implementation.KafkaProvider
 
         }
 
+        private Task ReadAsync() => Task.Factory.StartNew(() =>
+        {
+            foreach (var item in Queue.GetConsumingEnumerable(cts.Token))
+            {
+                OnMessageReady?.Invoke(this, new KafkaMessageArgs<T>(item));
+            }
+        });
+
         public void StopConsuming()
         {
             cts.Cancel();
         }
 
-        public Task ReadMessages()
-        {
-            return Task.Factory.StartNew(() =>
-            {
-                foreach (var item in Queue.GetConsumingEnumerable(cts.Token))
-                {
-                    OnMessageReady?.Invoke(this, new AnalogyKafkaLogMessageArgs(item));
-                }
-            });
-        }
+
+        public Task StartConsuming() => Task.WhenAll(ConsumeAsync(), ReadAsync());
+
     }
 }

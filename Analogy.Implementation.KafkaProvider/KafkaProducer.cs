@@ -5,16 +5,19 @@ using Confluent.Kafka;
 
 namespace Analogy.Implementation.KafkaProvider
 {
-    public class KafkaProducer
+    public class KafkaProducer<T>
     {
         private string KafkaServerURL { get; set; }
         private string Topic { get; set; }
         private ProducerConfig Config { get; set; }
-        public Action<DeliveryReport<Null, AnalogyLogMessage>> ReportHandler;
-        private readonly AnalogyKafkaSerializer serializer;
-        public KafkaProducer(string kafkaServerURL, string topic)
+        public Action<DeliveryReport<Null, T>> ReportHandler { get; }
+        public EventHandler<string> OnError;
+        public EventHandler<string> ReportDelivery;
+        private KafkaSerializer<T> Serializer { get; }
+
+        public KafkaProducer(string kafkaServerURL, string topic, KafkaSerializer<T> serializer)
         {
-            serializer = new AnalogyKafkaSerializer();
+            Serializer = serializer;
             KafkaServerURL = kafkaServerURL;
             Topic = topic;
             Config = new ProducerConfig
@@ -22,25 +25,29 @@ namespace Analogy.Implementation.KafkaProvider
                 BootstrapServers = KafkaServerURL,
             };
             ReportHandler = r =>
-                Console.WriteLine(!r.Error.IsError
-                    ? $"Delivered message to {r.TopicPartitionOffset}"
-                    : $"Delivery Error: {r.Error.Reason}");
+            {
+                if (r.Error.IsError)
+                    OnError?.Invoke(this, $"Delivery Error: {r.Error.Reason}");
+                else
+                    ReportDelivery?.Invoke(this, $"Delivered to {r.TopicPartitionOffset}. Topic: {r.Topic}");
+            };
+
         }
 
-        public async Task<DeliveryResult<Null, AnalogyLogMessage>> PublishAsync(AnalogyLogMessage message)
+        public async Task<DeliveryResult<Null, T>> PublishAsync(T message)
         {
-            using (var p = new ProducerBuilder<Null, AnalogyLogMessage>(Config).SetValueSerializer(serializer).Build())
+            using (var p = new ProducerBuilder<Null, T>(Config).SetValueSerializer(Serializer).Build())
             {
-                DeliveryResult<Null, AnalogyLogMessage> dr = await p.ProduceAsync(Topic, new Message<Null, AnalogyLogMessage> { Value = message });
+                DeliveryResult<Null, T> dr = await p.ProduceAsync(Topic, new Message<Null, T> { Value = message });
                 return dr;
             }
         }
 
-        public void Publish(AnalogyLogMessage message)
+        public void Publish(T message)
         {
-            using (var p = new ProducerBuilder<Null, AnalogyLogMessage>(Config).Build())
+            using (var p = new ProducerBuilder<Null, T>(Config).Build())
             {
-                p.Produce(Topic, new Message<Null, AnalogyLogMessage> { Value = message }, ReportHandler);
+                p.Produce(Topic, new Message<Null, T> { Value = message }, ReportHandler);
             }
         }
 

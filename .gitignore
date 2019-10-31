@@ -5,3 +5,6 @@
 /.vs/Analogy.LogViewer.KafkaProvider/v16
 /Analogy.Implementation.KafkaProvider/bin/Debug/netstandard2.0
 /Analogy.Implementation.KafkaProvider/obj
+/Analogy.Implementation.KafkaProvider.UnitTests/bin/Debug
+/Analogy.Implementation.KafkaProvider.UnitTests/obj/Debug
+/packages

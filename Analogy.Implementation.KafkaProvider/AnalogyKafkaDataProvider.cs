@@ -14,12 +14,12 @@ namespace Analogy.Implementation.KafkaProvider
         public event EventHandler<AnalogyLogMessagesArgs> OnManyMessagesReady;
         public IAnalogyOfflineDataProvider FileOperationsHandler { get; }
         public bool IsConnected { get; private set; }
-        public KafkaConsumer Consumer { get; set; }
+        public KafkaConsumer<AnalogyLogMessage> Consumer { get; set; }
+        public string groupId = "AnalogyKafkaLogin";
         public string topic = "KafkaLog";
         public string kafkaUrl = "localhost:9092";
         public Task<bool> CanStartReceiving() => Task.FromResult(IsConnected);
         private Task Consuming;
-        private Task Reading;
         public AnalogyKafkaDataProvider()
         {
 
@@ -27,8 +27,6 @@ namespace Analogy.Implementation.KafkaProvider
         public void StartReceiving()
         {
             Consuming = Consumer.StartConsuming();
-            Reading = Consumer.ReadMessages();
-
         }
 
         public void StopReceiving()
@@ -39,13 +37,13 @@ namespace Analogy.Implementation.KafkaProvider
         public void InitDataProvider()
         {
 
-            Consumer = new KafkaConsumer(kafkaUrl, topic);
+            Consumer = new KafkaConsumer<AnalogyLogMessage>(groupId, kafkaUrl, topic);
             Consumer.OnMessageReady += Consumer_OnMessageReady;
             IsConnected = true;
 
         }
 
-        private void Consumer_OnMessageReady(object sender, AnalogyKafkaLogMessageArgs e)
+        private void Consumer_OnMessageReady(object sender, KafkaMessageArgs<AnalogyLogMessage> e)
         {
             OnMessageReady?.Invoke(sender, new AnalogyLogMessageArgs(e.Message, Environment.MachineName, Environment.MachineName, ID));
         }

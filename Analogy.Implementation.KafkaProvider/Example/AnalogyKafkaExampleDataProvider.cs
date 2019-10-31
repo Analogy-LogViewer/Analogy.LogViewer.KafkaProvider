@@ -15,14 +15,14 @@ namespace Analogy.Implementation.KafkaProvider
         public event EventHandler<AnalogyLogMessagesArgs> OnManyMessagesReady;
         public IAnalogyOfflineDataProvider FileOperationsHandler { get; }
         public bool IsConnected { get; private set; }
-        public KafkaConsumer Consumer { get; set; }
-        public KafkaProducer Producer { get; set; }
+        public KafkaConsumer<AnalogyLogMessage> Consumer { get; set; }
+        public KafkaProducer<AnalogyLogMessage> Producer { get; set; }
+        public string groupId = "AnalogyKafkaExample";
         public string topic = "KafkaLog";
         public string kafkaUrl = "localhost:9092";
         public Task<bool> CanStartReceiving() => Task.FromResult(IsConnected);
         private TimerMessagesSimulator sim;
         private Task Consuming;
-        private Task Reading;
         public AnalogyKafkaExampleDataProvider()
         {
 
@@ -31,7 +31,6 @@ namespace Analogy.Implementation.KafkaProvider
         {
             sim.Start();
             Consuming = Consumer.StartConsuming();
-            Reading = Consumer.ReadMessages();
 
         }
 
@@ -43,15 +42,15 @@ namespace Analogy.Implementation.KafkaProvider
         public void InitDataProvider()
         {
 
-            Producer = new KafkaProducer(kafkaUrl, topic);
-            Consumer = new KafkaConsumer(kafkaUrl, topic);
+            Producer = new KafkaProducer<AnalogyLogMessage>(kafkaUrl, topic, new KafkaSerializer<AnalogyLogMessage>());
+            Consumer = new KafkaConsumer<AnalogyLogMessage>(groupId, kafkaUrl, topic);
             Consumer.OnMessageReady += Consumer_OnMessageReady;
             sim = new TimerMessagesSimulator(async m => { await Producer.PublishAsync(m); });
             IsConnected = true;
 
         }
 
-        private void Consumer_OnMessageReady(object sender, AnalogyKafkaLogMessageArgs e)
+        private void Consumer_OnMessageReady(object sender, KafkaMessageArgs<AnalogyLogMessage> e)
         {
             OnMessageReady?.Invoke(sender, new AnalogyLogMessageArgs(e.Message, Environment.MachineName, Environment.MachineName, ID));
         }

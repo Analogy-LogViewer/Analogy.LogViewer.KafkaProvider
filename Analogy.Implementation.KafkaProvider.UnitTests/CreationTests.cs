@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
+using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -14,11 +17,19 @@ namespace Analogy.Implementation.KafkaProvider.UnitTests
 
 
         [TestMethod]
-        public void CreationTest()
+        public async Task CreationTest()
         {
 
             var factories = GetFactories();
             Assert.IsTrue(factories != null);
+
+            foreach (var d in factories.Last().DataProviders.Items)
+            {
+                d.InitDataProvider();
+                (d as IAnalogyRealTimeDataProvider)?.StartReceiving();
+            }
+
+            await Task.Delay(10000);
         }
 
         private List<IAnalogyFactory> GetFactories()

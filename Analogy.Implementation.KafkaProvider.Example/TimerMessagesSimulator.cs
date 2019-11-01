@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Timers;
 using Analogy.Interfaces;
 
-namespace Analogy.Implementation.KafkaProvider
+namespace Analogy.Implementation.KafkaProvider.Example
 {
     public class TimerMessagesSimulator
     {

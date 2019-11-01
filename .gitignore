@@ -8,3 +8,11 @@
 /Analogy.Implementation.KafkaProvider.UnitTests/bin/Debug
 /Analogy.Implementation.KafkaProvider.UnitTests/obj/Debug
 /packages
+/.vs/Analogy.LogViewer.KafkaProvider/DesignTimeBuild
+/Analogy.Implementation.KafkaProvider/bin/Release/netstandard2.0
+*.nupkg
+/Analogy.Implementation.KafkaProvider/nuget.exe
+/Analogy.Implementation.KafkaProvider.Example/bin
+/Analogy.Implementation.KafkaProvider.Example/obj
+/Analogy.Implementation.KafkaProvider.UnitTests/bin/Release
+/Analogy.Implementation.KafkaProvider.UnitTests/obj/Release

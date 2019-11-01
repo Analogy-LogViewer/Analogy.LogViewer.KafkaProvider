@@ -1,12 +1,11 @@
-﻿using Analogy.Interfaces;
-using Analogy.Interfaces.Factories;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using Analogy.Interfaces;
+using Analogy.Interfaces.Factories;
 
-namespace Analogy.Implementation.KafkaProvider
+namespace Analogy.Implementation.KafkaProvider.Example
 {
-    class AnalogyKafkaExampleFactory// : IAnalogyFactory
+    class AnalogyKafkaExampleFactory : IAnalogyFactory
     {
         public Guid FactoryID { get; } = Guid.Parse("CFE5834B-806A-4DB0-B36C-7E2C67DE2ECF");
         public string Title { get; } = "Analogy Kafka Example";

@@ -23,6 +23,7 @@ namespace Analogy.Implementation.KafkaProvider
             Config = new ProducerConfig
             {
                 BootstrapServers = KafkaServerURL,
+                MessageTimeoutMs = 5000
             };
             ReportHandler = r =>
             {

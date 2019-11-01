@@ -30,7 +30,7 @@ namespace Analogy.Implementation.KafkaProvider
             {
                 GroupId = groupId,
                 BootstrapServers = KafkaServerURL,
-                AutoOffsetReset = AutoOffsetReset.Earliest
+                AutoOffsetReset = AutoOffsetReset.Earliest,
             };
 
 

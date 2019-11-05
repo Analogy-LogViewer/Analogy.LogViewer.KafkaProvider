@@ -34,7 +34,11 @@ namespace Analogy.Implementation.KafkaProvider.Example
 
         public void StopReceiving()
         {
+            sim.Stop();
             Consumer.StopConsuming();
+            Consumer.OnMessageReady -= Consumer_OnMessageReady;
+            Consumer.OnError -= Consumer_OnError;
+
         }
 
         public void InitDataProvider()
@@ -43,9 +47,16 @@ namespace Analogy.Implementation.KafkaProvider.Example
             Producer = new KafkaProducer<AnalogyLogMessage>(kafkaUrl, topic, new KafkaSerializer<AnalogyLogMessage>());
             Consumer = new KafkaConsumer<AnalogyLogMessage>(groupId, kafkaUrl, topic);
             Consumer.OnMessageReady += Consumer_OnMessageReady;
+            Consumer.OnError += Consumer_OnError;
             sim = new TimerMessagesSimulator(async m => { await Producer.PublishAsync(m); });
             IsConnected = true;
 
+        }
+
+        private void Consumer_OnError(object sender, KafkaMessageArgs<string> e)
+        {
+            AnalogyLogMessage error = new AnalogyLogMessage(e.Message, AnalogyLogLevel.Error, AnalogyLogClass.General, Environment.MachineName);
+            OnMessageReady?.Invoke(sender, new AnalogyLogMessageArgs(error, Environment.MachineName, Environment.MachineName, ID));
         }
 
         private void Consumer_OnMessageReady(object sender, KafkaMessageArgs<AnalogyLogMessage> e)

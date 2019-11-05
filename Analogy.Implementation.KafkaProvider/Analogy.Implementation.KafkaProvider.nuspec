@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Analogy.LogViewer.KafkaProvider</id>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <title>Analogy Log Viewer Kafka Provider</title>
     <authors>Lior Banai</authors>
     <owners>Lior Banai</owners>

@@ -14,6 +14,7 @@ namespace Analogy.Implementation.KafkaProvider
         private string Topic { get; set; }
         private ConsumerConfig Config { get; set; }
         public event EventHandler<KafkaMessageArgs<T>> OnMessageReady;
+        public event EventHandler<KafkaMessageArgs<string>> OnError;
         public BlockingCollectionQueue<T> Queue;
         public BlockingCollectionQueue<string> ErrorsQueue;
         private readonly KafkaSerializer<T> serializer;
@@ -54,12 +55,19 @@ namespace Analogy.Implementation.KafkaProvider
                              }
                              catch (TaskCanceledException ce)
                              {
+                                 string error = $"TaskCanceledException occurred. Exception: {ce}";
+                                 ErrorsQueue.Enqueue(error);
+                                 OnError?.Invoke(this, new KafkaMessageArgs<string>(error));
                                  Queue.CompleteAdding();
                                  return;
                              }
                              catch (ConsumeException e)
                              {
-                                 ErrorsQueue.Enqueue($"Error occurred: {e.Error.Reason}");
+                                 string error = $"Error occurred: {e.Error.Reason}. Exception: {e}";
+                                 ErrorsQueue.Enqueue(error);
+                                 OnError?.Invoke(this, new KafkaMessageArgs<string>(error));
+                                 Queue.CompleteAdding();
+                                 return;
                              }
                          }
                      }
@@ -84,6 +92,7 @@ namespace Analogy.Implementation.KafkaProvider
         public void StopConsuming()
         {
             cts.Cancel();
+            Queue.CompleteAdding();
         }
 
 

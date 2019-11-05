@@ -27,5 +27,6 @@ namespace Analogy.Implementation.KafkaProvider.Example
         }
 
         public void Start() => SimulateOnlineMessages.Start();
+        public void Stop() => SimulateOnlineMessages.Stop();
     }
 }

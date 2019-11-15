@@ -9,8 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.1.2" />
-    <PackageReference Include="Confluent.Kafka" Version="1.2.1" />
+    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.1.5" />
   </ItemGroup>
 
   <ItemGroup>

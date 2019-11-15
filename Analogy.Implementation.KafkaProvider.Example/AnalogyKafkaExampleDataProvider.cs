@@ -6,6 +6,7 @@ namespace Analogy.Implementation.KafkaProvider.Example
 {
     public class AnalogyKafkaExampleDataProvider : IAnalogyRealTimeDataProvider
     {
+        public string OptionalTitle => "Real time kafka provider example";
         public Guid ID { get; } = Guid.Parse("F1283D38-01B9-4753-996B-3CEF4312D7E2");
 
         public event EventHandler<AnalogyDataSourceDisconnectedArgs> OnDisconnected;
@@ -15,6 +16,9 @@ namespace Analogy.Implementation.KafkaProvider.Example
         public bool IsConnected { get; private set; }
         public KafkaConsumer<AnalogyLogMessage> Consumer { get; set; }
         public KafkaProducer<AnalogyLogMessage> Producer { get; set; }
+
+      
+
         public string groupId = "AnalogyKafkaExample";
         public string topic = "KafkaLog";
         public string kafkaUrl = "localhost:9092";

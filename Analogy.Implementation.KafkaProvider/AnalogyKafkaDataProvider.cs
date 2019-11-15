@@ -9,6 +9,7 @@ namespace Analogy.Implementation.KafkaProvider
     public class AnalogyKafkaDataProvider : IAnalogyRealTimeDataProvider
     {
         public Guid ID { get; } = Guid.Parse("350A2268-DAB2-4991-A29F-F597DD6E52FA");
+        public string OptionalTitle { get; } = "Real time Kafka provider";
         public event EventHandler<AnalogyDataSourceDisconnectedArgs> OnDisconnected;
         public event EventHandler<AnalogyLogMessageArgs> OnMessageReady;
         public event EventHandler<AnalogyLogMessagesArgs> OnManyMessagesReady;

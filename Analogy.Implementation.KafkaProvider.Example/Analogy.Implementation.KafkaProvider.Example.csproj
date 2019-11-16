@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.1.5" />
+    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.1.5.1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -76,9 +76,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Analogy.Implementation.KafkaProvider\Analogy.Implementation.KafkaProvider.csproj">
+    <ProjectReference Include="..\Analogy.Implementation.KafkaProvider\Analogy.LogViewer.KafkaProvider.csproj">
       <Project>{512d664a-7f6f-412c-b47c-78c4f6d7bdaa}</Project>
-      <Name>Analogy.Implementation.KafkaProvider</Name>
+      <Name>Analogy.LogViewer.KafkaProvider</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

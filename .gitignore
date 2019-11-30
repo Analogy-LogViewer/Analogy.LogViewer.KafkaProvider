@@ -16,3 +16,5 @@
 /Analogy.Implementation.KafkaProvider.Example/obj
 /Analogy.Implementation.KafkaProvider.UnitTests/bin/Release
 /Analogy.Implementation.KafkaProvider.UnitTests/obj/Release
+/Analogy.Implementation.KafkaProvider/Properties/PublishProfiles
+/nuget.exe

@@ -2,11 +2,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analogy.Implementation.KafkaProvider", "Analogy.Implementation.KafkaProvider\Analogy.Implementation.KafkaProvider.csproj", "{512D664A-7F6F-412C-B47C-78C4F6D7BDAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analogy.LogViewer.KafkaProvider", "Analogy.Implementation.KafkaProvider\Analogy.LogViewer.KafkaProvider.csproj", "{512D664A-7F6F-412C-B47C-78C4F6D7BDAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analogy.Implementation.KafkaProvider.UnitTests", "Analogy.Implementation.KafkaProvider.UnitTests\Analogy.Implementation.KafkaProvider.UnitTests.csproj", "{6A9A54EE-2F10-4EC6-8340-E923AD027137}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Analogy.LogViewer.KafkaProvider.UnitTests", "Analogy.Implementation.KafkaProvider.UnitTests\Analogy.LogViewer.KafkaProvider.UnitTests.csproj", "{6A9A54EE-2F10-4EC6-8340-E923AD027137}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analogy.Implementation.KafkaProvider.Example", "Analogy.Implementation.KafkaProvider.Example\Analogy.Implementation.KafkaProvider.Example.csproj", "{AEB13663-8261-46DB-923F-A9C51B05D7E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Analogy.LogViewer.KafkaProvider.Example", "Analogy.Implementation.KafkaProvider.Example\Analogy.LogViewer.KafkaProvider.Example.csproj", "{AEB13663-8261-46DB-923F-A9C51B05D7E9}"
 	ProjectSection(ProjectDependencies) = postProject
 		{512D664A-7F6F-412C-B47C-78C4F6D7BDAA} = {512D664A-7F6F-412C-B47C-78C4F6D7BDAA}
 	EndProjectSection

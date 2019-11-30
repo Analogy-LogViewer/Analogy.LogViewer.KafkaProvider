@@ -44,17 +44,21 @@ namespace Analogy.Implementation.KafkaProvider.Example
             Consumer.OnError -= Consumer_OnError;
 
         }
-
-        public void InitDataProvider()
+        
+        public Task InitializeDataProviderAsync()
         {
-
             Producer = new KafkaProducer<AnalogyLogMessage>(kafkaUrl, topic, new KafkaSerializer<AnalogyLogMessage>());
             Consumer = new KafkaConsumer<AnalogyLogMessage>(groupId, kafkaUrl, topic);
             Consumer.OnMessageReady += Consumer_OnMessageReady;
             Consumer.OnError += Consumer_OnError;
             sim = new TimerMessagesSimulator(async m => { await Producer.PublishAsync(m); });
             IsConnected = true;
+            return Task.CompletedTask;
+        }
 
+        public void MessageOpened(AnalogyLogMessage message)
+        {
+            //nop
         }
 
         private void Consumer_OnError(object sender, KafkaMessageArgs<string> e)

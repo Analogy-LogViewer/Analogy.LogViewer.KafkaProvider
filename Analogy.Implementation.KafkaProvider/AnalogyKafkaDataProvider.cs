@@ -35,15 +35,19 @@ namespace Analogy.Implementation.KafkaProvider
             Consumer.StopConsuming();
         }
 
-        public void InitDataProvider()
+       
+        public Task InitializeDataProviderAsync()
         {
-
             Consumer = new KafkaConsumer<AnalogyLogMessage>(groupId, kafkaUrl, topic);
             Consumer.OnMessageReady += Consumer_OnMessageReady;
             IsConnected = true;
-
+            return Task.CompletedTask;
         }
 
+        public void MessageOpened(AnalogyLogMessage message)
+        {
+          //nop
+        }
         private void Consumer_OnMessageReady(object sender, KafkaMessageArgs<AnalogyLogMessage> e)
         {
             OnMessageReady?.Invoke(sender, new AnalogyLogMessageArgs(e.Message, Environment.MachineName, Environment.MachineName, ID));

@@ -36,7 +36,7 @@ namespace Analogy.Implementation.KafkaProvider
         }
 
        
-        public Task InitializeDataProviderAsync()
+        public Task InitializeDataProviderAsync(IAnalogyLogger logger)
         {
             Consumer = new KafkaConsumer<AnalogyLogMessage>(groupId, kafkaUrl, topic);
             Consumer.OnMessageReady += Consumer_OnMessageReady;

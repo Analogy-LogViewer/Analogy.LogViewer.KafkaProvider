@@ -25,7 +25,7 @@ namespace Analogy.Implementation.KafkaProvider.UnitTests
 
             foreach (var d in factories.Last().DataProviders.Items)
             {
-                d.InitDataProvider();
+                await d.InitializeDataProviderAsync(null);
                 (d as IAnalogyRealTimeDataProvider)?.StartReceiving();
             }
 
@@ -49,7 +49,7 @@ namespace Analogy.Implementation.KafkaProvider.UnitTests
                             factories.Add(factory);
                             foreach (var provider in factory.DataProviders.Items)
                             {
-                                provider.InitDataProvider();
+                                provider.InitializeDataProviderAsync(null);
                             }
 
                         }

@@ -37,7 +37,7 @@ namespace Analogy.Implementation.KafkaProvider.UnitTests
             List<IAnalogyFactory> factories = new List<IAnalogyFactory>();
             try
             {
-                Assembly assembly = Assembly.LoadFile(Path.Combine(Environment.CurrentDirectory, "Analogy.Implementation.KafkaProvider.dll"));
+                Assembly assembly = Assembly.LoadFile(Path.Combine(Environment.CurrentDirectory, "Analogy.LogViewer.KafkaProvider.dll"));
                 Type[] types = assembly.GetTypes();
                 foreach (Type aType in types)
                 {

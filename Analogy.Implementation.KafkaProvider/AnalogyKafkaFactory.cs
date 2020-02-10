@@ -17,6 +17,7 @@ namespace Analogy.Implementation.KafkaProvider
 
         public IEnumerable<IAnalogyChangeLog> ChangeLog { get; } = new List<AnalogyChangeLog>
         {
+            new AnalogyChangeLog("Add SourceLink",AnalogChangeLogType.Improvement, "Lior Banai",new DateTime(2020, 02, 10)),
             new AnalogyChangeLog("Add multi topic subscription",AnalogChangeLogType.None, "Lior Banai",new DateTime(2019, 10, 31)),
             new AnalogyChangeLog("Create Initial implementation",AnalogChangeLogType.None, "Lior Banai",new DateTime(2019, 10, 19))
         };

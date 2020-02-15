@@ -19,3 +19,4 @@
 /Analogy.Implementation.KafkaProvider/Properties/PublishProfiles
 /nuget.exe
 *.snupkg
+/Analogy.Implementation.KafkaProvider.UnitTests/obj

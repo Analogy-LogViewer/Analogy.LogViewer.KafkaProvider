@@ -6,7 +6,7 @@
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>Lior Banai</Authors>
     <Company>Lior Banai</Company>
     <Product>Analogy.LogViewer.KafkaProvider</Product>
@@ -20,6 +20,8 @@
     <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.KafkaProvider</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <FileVersion>1.0.2.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

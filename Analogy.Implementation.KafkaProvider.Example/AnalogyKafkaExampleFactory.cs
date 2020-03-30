@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using Analogy.Interfaces;
+﻿using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
+using System;
+using System.Collections.Generic;
 
 namespace Analogy.Implementation.KafkaProvider.Example
 {
-    class AnalogyKafkaExampleFactory : IAnalogyFactory
+    public class AnalogyKafkaExampleFactory : IAnalogyFactory
     {
-        public Guid FactoryID { get; } = Guid.Parse("CFE5834B-806A-4DB0-B36C-7E2C67DE2ECF");
+        internal static Guid Id = new Guid("CFE5834B-806A-4DB0-B36C-7E2C67DE2ECF");
+        public Guid FactoryId { get; } = Id;
         public string Title { get; } = "Analogy Kafka Example";
-        public IAnalogyDataProvidersFactory DataProviders { get; } = new AnalogyKafkaExampleDataProviderFactory();
-        public IAnalogyCustomActionsFactory Actions { get; } = null;
         public IEnumerable<string> Contributors { get; } = new List<string>() { "Lior Banai" };
         public string About { get; } = "Kafka Provider for Analogy (Producer example)";
 
@@ -22,7 +21,10 @@ namespace Analogy.Implementation.KafkaProvider.Example
         public class AnalogyKafkaExampleDataProviderFactory : IAnalogyDataProvidersFactory
         {
             public string Title { get; } = "Analogy Kafka Providers Example";
-            public IEnumerable<IAnalogyDataProvider> Items { get; set; } = new List<IAnalogyDataProvider> { new AnalogyKafkaExampleDataProvider() };
+            public IEnumerable<IAnalogyDataProvider> DataProviders { get; set; } = new List<IAnalogyDataProvider> { new AnalogyKafkaExampleDataProvider() };
+
+            public Guid FactoryId => AnalogyKafkaExampleFactory.Id;
+
         }
     }
 }

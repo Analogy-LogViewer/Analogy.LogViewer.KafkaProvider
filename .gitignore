@@ -20,3 +20,4 @@
 /nuget.exe
 *.snupkg
 /Analogy.Implementation.KafkaProvider.UnitTests/obj
+/Analogy.Implementation.KafkaProvider/Analogy.Implementation.KafkaProvider.csproj.user

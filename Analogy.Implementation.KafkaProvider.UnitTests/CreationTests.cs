@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Threading.Tasks;
-using Analogy.Interfaces;
-using Analogy.Interfaces.Factories;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Analogy.Implementation.KafkaProvider.UnitTests
 {
@@ -20,55 +13,55 @@ namespace Analogy.Implementation.KafkaProvider.UnitTests
         public async Task CreationTest()
         {
 
-            var factories = GetFactories();
-            Assert.IsTrue(factories != null);
+            //var factories = GetFactories();
+            //Assert.IsTrue(factories != null);
 
-            foreach (var d in factories.Last().DataProviders.Items)
-            {
-                await d.InitializeDataProviderAsync(null);
-                (d as IAnalogyRealTimeDataProvider)?.StartReceiving();
-            }
+            //foreach (var d in factories.Last().DataProviders.Items)
+            //{
+            //    await d.InitializeDataProviderAsync(null);
+            //    (d as IAnalogyRealTimeDataProvider)?.StartReceiving();
+            //}
 
-            await Task.Delay(10000);
+            //await Task.Delay(1000);
         }
 
-        private List<IAnalogyFactory> GetFactories()
-        {
-            List<IAnalogyFactory> factories = new List<IAnalogyFactory>();
-            try
-            {
-                Assembly assembly = Assembly.LoadFile(Path.Combine(Environment.CurrentDirectory, "Analogy.LogViewer.KafkaProvider.dll"));
-                Type[] types = assembly.GetTypes();
-                foreach (Type aType in types)
-                {
-                    try
-                    {
-                        if (aType.GetInterface(nameof(IAnalogyFactory)) != null)
-                        {
-                            if (!(Activator.CreateInstance(aType) is IAnalogyFactory factory)) continue;
-                            factories.Add(factory);
-                            foreach (var provider in factory.DataProviders.Items)
-                            {
-                                provider.InitializeDataProviderAsync(null);
-                            }
+        //private List<IAnalogyFactory> GetFactories()
+        //{
+        //    List<IAnalogyFactory> factories = new List<IAnalogyFactory>();
+        //    try
+        //    {
+        //        Assembly assembly = Assembly.LoadFile(Path.Combine(Environment.CurrentDirectory, "Analogy.LogViewer.KafkaProvider.dll"));
+        //        Type[] types = assembly.GetTypes();
+        //        foreach (Type aType in types)
+        //        {
+        //            try
+        //            {
+        //                if (aType.GetInterface(nameof(IAnalogyFactory)) != null)
+        //                {
+        //                    if (!(Activator.CreateInstance(aType) is IAnalogyFactory factory)) continue;
+        //                    factories.Add(factory);
+        //                    foreach (var provider in factory.DataProviders.Items)
+        //                    {
+        //                        provider.InitializeDataProviderAsync(null);
+        //                    }
 
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        Assert.Fail("Failed with error: " + e);
-                    }
+        //                }
+        //            }
+        //            catch (Exception e)
+        //            {
+        //                Assert.Fail("Failed with error: " + e);
+        //            }
 
-                }
+        //        }
 
-                return factories;
-            }
-            catch (Exception e)
-            {
-                Assert.Fail("Failed with error: " + e);
-                return new List<IAnalogyFactory>(0);
-            }
-        }
+        //        return factories;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Assert.Fail("Failed with error: " + e);
+        //        return new List<IAnalogyFactory>(0);
+        //    }
+        //}
 
         public void TestStartConsuming()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
 using Analogy.Interfaces;
@@ -21,6 +22,12 @@ namespace Analogy.Implementation.KafkaProvider
         public string kafkaUrl = "localhost:9092";
         public Task<bool> CanStartReceiving() => Task.FromResult(IsConnected);
         private Task Consuming;
+        public bool UseCustomColors { get; set; } = false;
+        public IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders()
+            => Array.Empty<(string, string)>();
+
+        public (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage)
+            => (Color.Empty, Color.Empty);
         public AnalogyKafkaDataProvider()
         {
 

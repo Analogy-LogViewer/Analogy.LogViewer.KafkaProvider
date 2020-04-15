@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Threading.Tasks;
 using Analogy.Interfaces;
 
@@ -25,6 +27,12 @@ namespace Analogy.Implementation.KafkaProvider.Example
         public Task<bool> CanStartReceiving() => Task.FromResult(IsConnected);
         private TimerMessagesSimulator sim;
         private Task Consuming;
+        public bool UseCustomColors { get; set; } = false;
+        public IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders()
+            => Array.Empty<(string, string)>();
+
+        public (Color backgroundColor, Color foregroundColor) GetColorForMessage(IAnalogyLogMessage logMessage)
+            => (Color.Empty, Color.Empty);
         public AnalogyKafkaExampleDataProvider()
         {
 

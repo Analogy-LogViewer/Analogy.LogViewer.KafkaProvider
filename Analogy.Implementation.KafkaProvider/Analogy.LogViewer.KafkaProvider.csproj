@@ -1,49 +1,51 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net471;net472;netcoreapp3.1;netstandard2.0</TargetFrameworks>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <Version>1.1.3</Version>
-    <Authors>Lior Banai</Authors>
-    <Company>Analogy.LogViewer</Company>
-    <Product>Analogy.LogViewer.KafkaProvider</Product>
-    <ApplicationIcon>Analogy_logo1.ico</ApplicationIcon>
-    <PackageId>Analogy.LogViewer.KafkaProvider</PackageId>
-    <Copyright>LIor Banai 2020</Copyright>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.KafkaProvider</PackageProjectUrl>
-    <PackageIcon>icon.png</PackageIcon>
-    <PackageIconUrl />
-    <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.KafkaProvider</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.1.3.0</AssemblyVersion>
-    <FileVersion>1.1.3.0</FileVersion>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net471;net472;netcoreapp3.1;netstandard2.0</TargetFrameworks>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<Version>1.1.3.1</Version>
+		<Authors>Lior Banai</Authors>
+		<Company>Analogy.LogViewer</Company>
+		<Product>Analogy.LogViewer.KafkaProvider</Product>
+		<ApplicationIcon>Analogy_logo1.ico</ApplicationIcon>
+		<PackageId>Analogy.LogViewer.KafkaProvider</PackageId>
+		<Copyright>LIor Banai 2020</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.KafkaProvider</PackageProjectUrl>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageIconUrl />
+		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.KafkaProvider</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<AssemblyVersion>1.1.3.1</AssemblyVersion>
+		<FileVersion>1.1.3.1</FileVersion>
+		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Analogy.DataProviders.Extensions" Version="1.1.7" />
-    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.3.1" />
-    <PackageReference Include="Confluent.Kafka" Version="1.4.4" />
-    <PackageReference Include="librdkafka.redist" Version="1.4.4" />
-    <PackageReference Include="Microsoft.Build.Tasks.Git" Version="1.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Analogy.DataProviders.Extensions" Version="1.1.7" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.3.1" />
+		<PackageReference Include="Confluent.Kafka" Version="1.4.4" />
+		<PackageReference Include="librdkafka.redist" Version="1.4.4" />
+		<PackageReference Include="Microsoft.Build.Tasks.Git" Version="1.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="System.Resources.Extensions" Version="4.6.0"/>
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\icon.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\icon.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
 
 </Project>

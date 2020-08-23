@@ -32,14 +32,16 @@ namespace Analogy.Implementation.KafkaProvider
         {
 
         }
-        public void StartReceiving()
+        public Task StartReceiving()
         {
             Consuming = Consumer.StartConsuming();
+            return Task.CompletedTask;
         }
 
-        public void StopReceiving()
+        public Task StopReceiving()
         {
             Consumer.StopConsuming();
+            return Task.CompletedTask;
         }
 
        

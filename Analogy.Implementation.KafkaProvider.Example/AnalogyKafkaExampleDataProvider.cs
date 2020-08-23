@@ -19,7 +19,7 @@ namespace Analogy.Implementation.KafkaProvider.Example
         public KafkaConsumer<AnalogyLogMessage> Consumer { get; set; }
         public KafkaProducer<AnalogyLogMessage> Producer { get; set; }
 
-      
+
 
         public string groupId = "AnalogyKafkaExample";
         public string topic = "KafkaLog";
@@ -37,22 +37,22 @@ namespace Analogy.Implementation.KafkaProvider.Example
         {
 
         }
-        public void StartReceiving()
+        public Task StartReceiving()
         {
             sim.Start();
             Consuming = Consumer.StartConsuming();
-
+            return Task.CompletedTask;
         }
 
-        public void StopReceiving()
+        public Task StopReceiving()
         {
             sim.Stop();
             Consumer.StopConsuming();
             Consumer.OnMessageReady -= Consumer_OnMessageReady;
             Consumer.OnError -= Consumer_OnError;
-
+            return Task.CompletedTask;
         }
-        
+
         public Task InitializeDataProviderAsync(IAnalogyLogger logger)
         {
             Producer = new KafkaProducer<AnalogyLogMessage>(kafkaUrl, topic, new KafkaSerializer<AnalogyLogMessage>());

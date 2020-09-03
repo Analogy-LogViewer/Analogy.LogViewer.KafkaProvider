@@ -9,12 +9,17 @@ namespace Analogy.Implementation.KafkaProvider
 {
     public class AnalogyKafkaDataProvider : IAnalogyRealTimeDataProvider
     {
-        public Guid ID { get; } = Guid.Parse("350A2268-DAB2-4991-A29F-F597DD6E52FA");
+        public Guid Id { get; } = Guid.Parse("350A2268-DAB2-4991-A29F-F597DD6E52FA");
         public string OptionalTitle { get; } = "Real time Kafka provider";
+
         public event EventHandler<AnalogyDataSourceDisconnectedArgs> OnDisconnected;
         public event EventHandler<AnalogyLogMessageArgs> OnMessageReady;
         public event EventHandler<AnalogyLogMessagesArgs> OnManyMessagesReady;
         public IAnalogyOfflineDataProvider FileOperationsHandler { get; }
+        public Image ConnectedLargeImage { get; } = null;
+        public Image ConnectedSmallImage { get; } = null;
+        public Image DisconnectedLargeImage { get; } = null;
+        public Image DisconnectedSmallImage { get; } = null;
         public bool IsConnected { get; private set; }
         public KafkaConsumer<AnalogyLogMessage> Consumer { get; set; }
         public string groupId = "AnalogyKafkaLogin";
@@ -44,7 +49,7 @@ namespace Analogy.Implementation.KafkaProvider
             return Task.CompletedTask;
         }
 
-       
+
         public Task InitializeDataProviderAsync(IAnalogyLogger logger)
         {
             Consumer = new KafkaConsumer<AnalogyLogMessage>(groupId, kafkaUrl, topic);
@@ -55,11 +60,11 @@ namespace Analogy.Implementation.KafkaProvider
 
         public void MessageOpened(AnalogyLogMessage message)
         {
-          //nop
+            //nop
         }
         private void Consumer_OnMessageReady(object sender, KafkaMessageArgs<AnalogyLogMessage> e)
         {
-            OnMessageReady?.Invoke(sender, new AnalogyLogMessageArgs(e.Message, Environment.MachineName, Environment.MachineName, ID));
+            OnMessageReady?.Invoke(sender, new AnalogyLogMessageArgs(e.Message, Environment.MachineName, Environment.MachineName, Id));
         }
 
     }

@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net471;net472;netcoreapp3.1;netstandard2.0</TargetFrameworks>
+		<TargetFrameworks>net471;net472;netcoreapp3.1</TargetFrameworks>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
-		<Version>1.1.4</Version>
+		<Version>1.1.5</Version>
 		<Authors>Lior Banai</Authors>
 		<Company>Analogy.LogViewer</Company>
 		<Product>Analogy.LogViewer.KafkaProvider</Product>
@@ -20,8 +20,8 @@
 		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.KafkaProvider</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<AssemblyVersion>1.1.4.0</AssemblyVersion>
-		<FileVersion>1.1.4.0</FileVersion>
+		<AssemblyVersion>1.1.5.0</AssemblyVersion>
+		<FileVersion>1.1.5.0</FileVersion>
 		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
 	</PropertyGroup>
 

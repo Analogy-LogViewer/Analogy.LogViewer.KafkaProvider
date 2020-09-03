@@ -1,36 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.1.2</Version>
-    <Authors>Lior Banai</Authors>
-    <Company>Lior Banai</Company>
-    <Product>Analogy.LogViewer.KafkaProvider</Product>
-    <Copyright>LIor Banai 2020</Copyright>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.KafkaProvider</PackageProjectUrl>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <PackageIcon>icon.png</PackageIcon>
-    <PackageIconUrl />
-    <RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.KafkaProvider</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net471;net472;netcoreapp3.1</TargetFrameworks>
+		<Version>0.1.2</Version>
+		<Authors>Lior Banai</Authors>
+		<Company>Lior Banai</Company>
+		<Product>Analogy.LogViewer.KafkaProvider</Product>
+		<Copyright>LIor Banai 2020</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.KafkaProvider</PackageProjectUrl>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageIconUrl />
+		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.KafkaProvider</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.4.3" />
-    <PackageReference Include="Confluent.Kafka" Version="1.5.1" />
-    <PackageReference Include="librdkafka.redist" Version="1.5.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.4.3" />
+		<PackageReference Include="Confluent.Kafka" Version="1.5.1" />
+		<PackageReference Include="librdkafka.redist" Version="1.5.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Analogy.Implementation.KafkaProvider\Analogy.LogViewer.KafkaProvider.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Analogy.Implementation.KafkaProvider\Analogy.LogViewer.KafkaProvider.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\icon.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\icon.png">
+			<Pack>True</Pack>
+			<PackagePath></PackagePath>
+		</None>
+	</ItemGroup>
 
 </Project>

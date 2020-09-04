@@ -9,8 +9,11 @@ namespace Analogy.Implementation.KafkaProvider.Example
     public class AnalogyKafkaExampleDataProvider : IAnalogyRealTimeDataProvider
     {
         public string OptionalTitle => "Real time kafka provider example";
-        public Guid ID { get; } = Guid.Parse("F1283D38-01B9-4753-996B-3CEF4312D7E2");
-
+        public Guid Id { get; } = Guid.Parse("F1283D38-01B9-4753-996B-3CEF4312D7E2");
+        public Image ConnectedLargeImage { get; } = null;
+        public Image ConnectedSmallImage { get; } = null;
+        public Image DisconnectedLargeImage { get; } = null;
+        public Image DisconnectedSmallImage { get; } = null;
         public event EventHandler<AnalogyDataSourceDisconnectedArgs> OnDisconnected;
         public event EventHandler<AnalogyLogMessageArgs> OnMessageReady;
         public event EventHandler<AnalogyLogMessagesArgs> OnManyMessagesReady;
@@ -19,7 +22,7 @@ namespace Analogy.Implementation.KafkaProvider.Example
         public KafkaConsumer<AnalogyLogMessage> Consumer { get; set; }
         public KafkaProducer<AnalogyLogMessage> Producer { get; set; }
 
-      
+
 
         public string groupId = "AnalogyKafkaExample";
         public string topic = "KafkaLog";
@@ -37,22 +40,22 @@ namespace Analogy.Implementation.KafkaProvider.Example
         {
 
         }
-        public void StartReceiving()
+        public Task StartReceiving()
         {
             sim.Start();
             Consuming = Consumer.StartConsuming();
-
+            return Task.CompletedTask;
         }
 
-        public void StopReceiving()
+        public Task StopReceiving()
         {
             sim.Stop();
             Consumer.StopConsuming();
             Consumer.OnMessageReady -= Consumer_OnMessageReady;
             Consumer.OnError -= Consumer_OnError;
-
+            return Task.CompletedTask;
         }
-        
+
         public Task InitializeDataProviderAsync(IAnalogyLogger logger)
         {
             Producer = new KafkaProducer<AnalogyLogMessage>(kafkaUrl, topic, new KafkaSerializer<AnalogyLogMessage>());
@@ -72,12 +75,12 @@ namespace Analogy.Implementation.KafkaProvider.Example
         private void Consumer_OnError(object sender, KafkaMessageArgs<string> e)
         {
             AnalogyLogMessage error = new AnalogyLogMessage(e.Message, AnalogyLogLevel.Error, AnalogyLogClass.General, Environment.MachineName);
-            OnMessageReady?.Invoke(sender, new AnalogyLogMessageArgs(error, Environment.MachineName, Environment.MachineName, ID));
+            OnMessageReady?.Invoke(sender, new AnalogyLogMessageArgs(error, Environment.MachineName, Environment.MachineName, Id));
         }
 
         private void Consumer_OnMessageReady(object sender, KafkaMessageArgs<AnalogyLogMessage> e)
         {
-            OnMessageReady?.Invoke(sender, new AnalogyLogMessageArgs(e.Message, Environment.MachineName, Environment.MachineName, ID));
+            OnMessageReady?.Invoke(sender, new AnalogyLogMessageArgs(e.Message, Environment.MachineName, Environment.MachineName, Id));
         }
 
     }

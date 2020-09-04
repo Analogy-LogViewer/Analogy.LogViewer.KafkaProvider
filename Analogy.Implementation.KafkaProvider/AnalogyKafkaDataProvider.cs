@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Text;
 using System.Threading.Tasks;
 using Analogy.Interfaces;
 
-namespace Analogy.Implementation.KafkaProvider
+namespace Analogy.LogViewer.KafkaProvider
 {
     public class AnalogyKafkaDataProvider : IAnalogyRealTimeDataProvider
     {
-        public Guid Id { get; } = Guid.Parse("350A2268-DAB2-4991-A29F-F597DD6E52FA");
-        public string OptionalTitle { get; } = "Real time Kafka provider";
+        public Guid Id { get; set; } = Guid.Parse("350A2268-DAB2-4991-A29F-F597DD6E52FA");
+        public string OptionalTitle { get; set; } = "Real time Kafka provider";
 
         public event EventHandler<AnalogyDataSourceDisconnectedArgs> OnDisconnected;
         public event EventHandler<AnalogyLogMessageArgs> OnMessageReady;
         public event EventHandler<AnalogyLogMessagesArgs> OnManyMessagesReady;
         public IAnalogyOfflineDataProvider FileOperationsHandler { get; }
-        public Image ConnectedLargeImage { get; } = null;
-        public Image ConnectedSmallImage { get; } = null;
-        public Image DisconnectedLargeImage { get; } = null;
-        public Image DisconnectedSmallImage { get; } = null;
+        public Image ConnectedLargeImage { get; set; } = null;
+        public Image ConnectedSmallImage { get; set; } = null;
+        public Image DisconnectedLargeImage { get; set; } = null;
+        public Image DisconnectedSmallImage { get; set; } = null;
         public bool IsConnected { get; private set; }
         public KafkaConsumer<AnalogyLogMessage> Consumer { get; set; }
         public string groupId = "AnalogyKafkaLogin";

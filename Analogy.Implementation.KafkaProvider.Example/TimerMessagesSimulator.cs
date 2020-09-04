@@ -2,7 +2,7 @@
 using System.Timers;
 using Analogy.Interfaces;
 
-namespace Analogy.Implementation.KafkaProvider.Example
+namespace Analogy.LogViewer.KafkaProvider.Example
 {
     public class TimerMessagesSimulator
     {

@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Confluent.Kafka;
 
-namespace Analogy.Implementation.KafkaProvider
+namespace Analogy.LogViewer.KafkaProvider
 {
     public class KafkaSerializer<T> : ISerializer<T>, IDeserializer<T>
     {

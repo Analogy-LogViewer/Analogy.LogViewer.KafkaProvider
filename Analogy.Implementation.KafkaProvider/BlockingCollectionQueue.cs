@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 
-namespace Analogy.Implementation.KafkaProvider
+namespace Analogy.LogViewer.KafkaProvider
 {
     public class BlockingCollectionQueue<T>
     {

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Analogy.Interfaces;
 using Confluent.Kafka;
 
-namespace Analogy.Implementation.KafkaProvider
+namespace Analogy.LogViewer.KafkaProvider
 {
     public class KafkaProducer<T>
     {

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Analogy.Interfaces;
+﻿using Analogy.Interfaces;
 
-namespace Analogy.Implementation.KafkaProvider
+namespace Analogy.LogViewer.KafkaProvider
 {
     class AnalogyKafkaProducer : KafkaProducer<AnalogyLogMessage>
     {

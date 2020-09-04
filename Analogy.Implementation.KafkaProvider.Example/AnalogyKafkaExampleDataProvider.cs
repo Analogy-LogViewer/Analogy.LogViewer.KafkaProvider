@@ -4,16 +4,16 @@ using System.Drawing;
 using System.Threading.Tasks;
 using Analogy.Interfaces;
 
-namespace Analogy.Implementation.KafkaProvider.Example
+namespace Analogy.LogViewer.KafkaProvider.Example
 {
     public class AnalogyKafkaExampleDataProvider : IAnalogyRealTimeDataProvider
     {
-        public string OptionalTitle => "Real time kafka provider example";
-        public Guid Id { get; } = Guid.Parse("F1283D38-01B9-4753-996B-3CEF4312D7E2");
-        public Image ConnectedLargeImage { get; } = null;
-        public Image ConnectedSmallImage { get; } = null;
-        public Image DisconnectedLargeImage { get; } = null;
-        public Image DisconnectedSmallImage { get; } = null;
+        public string OptionalTitle { get; set; } = "Real time kafka provider example";
+        public Guid Id { get; set; } = Guid.Parse("F1283D38-01B9-4753-996B-3CEF4312D7E2");
+        public Image ConnectedLargeImage { get; set; } = null;
+        public Image ConnectedSmallImage { get; set; } = null;
+        public Image DisconnectedLargeImage { get; set; } = null;
+        public Image DisconnectedSmallImage { get; set; } = null;
         public event EventHandler<AnalogyDataSourceDisconnectedArgs> OnDisconnected;
         public event EventHandler<AnalogyLogMessageArgs> OnMessageReady;
         public event EventHandler<AnalogyLogMessagesArgs> OnManyMessagesReady;

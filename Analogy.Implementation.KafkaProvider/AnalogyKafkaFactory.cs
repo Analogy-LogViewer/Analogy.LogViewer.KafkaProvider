@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using Analogy.Interfaces;
 using Analogy.Interfaces.Factories;
+using Analogy.LogViewer.KafkaProvider.Properties;
 
 namespace Analogy.LogViewer.KafkaProvider
 {
@@ -10,8 +12,8 @@ namespace Analogy.LogViewer.KafkaProvider
         internal static Guid Id = new Guid("FC2115F6-058A-430B-8E41-385E7A3DF3A9");
         public Guid FactoryId { get; set; } = Id;
         public string Title { get; set; } = "Analogy Kafka Provider";
-        public IAnalogyDataProvidersFactory DataProviders { get; } = new AnalogyKafkaDataProviderFactory();
-        public IAnalogyCustomActionsFactory Actions { get; } = null;
+        public Image SmallImage { get; set; } = Resources.Analogy_image_16x16;
+        public Image LargeImage { get; set; } = Resources.Analogy_image_32x32;
         public IEnumerable<string> Contributors { get; set; } = new List<string>() { "Lior Banai" };
         public string About { get; set; } = "Kafka Provider for Analogy";
 

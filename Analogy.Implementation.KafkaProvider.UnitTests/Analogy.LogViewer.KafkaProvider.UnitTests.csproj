@@ -60,7 +60,7 @@
       <Version>2.7.5</Version>
     </PackageReference>
     <PackageReference Include="Confluent.Kafka">
-      <Version>1.5.1</Version>
+      <Version>1.5.2</Version>
     </PackageReference>
     <PackageReference Include="librdkafka.redist">
       <Version>1.5.0</Version>

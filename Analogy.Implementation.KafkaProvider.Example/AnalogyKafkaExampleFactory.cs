@@ -10,6 +10,11 @@ namespace Analogy.LogViewer.KafkaProvider.Example
     public class AnalogyKafkaExampleFactory : IAnalogyFactory
     {
         internal static Guid Id = new Guid("CFE5834B-806A-4DB0-B36C-7E2C67DE2ECF");
+        public void RegisterNotificationCallback(INotificationReporter notificationReporter)
+        {
+            
+        }
+
         public Guid FactoryId { get; set; } = Id;
         public string Title { get; set; } = "Analogy Kafka Example";
         public Image SmallImage { get; set; } = Resources.Analogy_image_16x16;

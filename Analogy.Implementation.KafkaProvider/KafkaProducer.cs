@@ -27,9 +27,13 @@ namespace Analogy.LogViewer.KafkaProvider
             ReportHandler = r =>
             {
                 if (r.Error.IsError)
+                {
                     OnError?.Invoke(this, $"Delivery Error: {r.Error.Reason}");
+                }
                 else
+                {
                     ReportDelivery?.Invoke(this, $"Delivered to {r.TopicPartitionOffset}. Topic: {r.Topic}");
+                }
             };
 
         }

@@ -7,22 +7,18 @@ using Analogy.LogViewer.KafkaProvider.Properties;
 
 namespace Analogy.LogViewer.KafkaProvider.Example
 {
-    public class AnalogyKafkaExampleFactory : IAnalogyFactory
+    public class AnalogyKafkaExampleFactory : Template.PrimaryFactory
     {
         internal static Guid Id = new Guid("CFE5834B-806A-4DB0-B36C-7E2C67DE2ECF");
-        public void RegisterNotificationCallback(INotificationReporter notificationReporter)
-        {
-            
-        }
 
-        public Guid FactoryId { get; set; } = Id;
-        public string Title { get; set; } = "Analogy Kafka Example";
-        public Image SmallImage { get; set; } = Resources.Analogy_image_16x16;
-        public Image LargeImage { get; set; } = Resources.Analogy_image_32x32;
-        public IEnumerable<string> Contributors { get; set; } = new List<string>() { "Lior Banai" };
-        public string About { get; set; } = "Kafka Provider for Analogy (Producer example)";
+        public override Guid FactoryId { get; set; } = Id;
+        public override string Title { get; set; } = "Analogy Kafka Example";
+        public override Image SmallImage { get; set; } = Resources.Analogy_image_16x16;
+        public override Image LargeImage { get; set; } = Resources.Analogy_image_32x32;
+        public override IEnumerable<string> Contributors { get; set; } = new List<string>() { "Lior Banai" };
+        public override string About { get; set; } = "Kafka Provider for Analogy (Producer example)";
 
-        public IEnumerable<IAnalogyChangeLog> ChangeLog { get; set; } = new List<AnalogyChangeLog>
+        public override IEnumerable<IAnalogyChangeLog> ChangeLog { get; set; } = new List<AnalogyChangeLog>
         {
             new AnalogyChangeLog("Create Initial implementation (example)",AnalogChangeLogType.None, "Lior Banai",new DateTime(2019, 10, 20))
         };

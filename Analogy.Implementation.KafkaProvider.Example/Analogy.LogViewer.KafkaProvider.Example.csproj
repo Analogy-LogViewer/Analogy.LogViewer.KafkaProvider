@@ -6,7 +6,7 @@
 		<Authors>Lior Banai</Authors>
 		<Company>Lior Banai</Company>
 		<Product>Analogy.LogViewer.KafkaProvider</Product>
-		<Copyright>LIor Banai 2020</Copyright>
+		<Copyright>Lior Banai 2020</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.KafkaProvider</PackageProjectUrl>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -19,7 +19,7 @@
 	<ItemGroup>
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="2.13.0" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="1.9.1" />
-		<PackageReference Include="Confluent.Kafka" Version="1.6.3" />
+		<PackageReference Include="Confluent.Kafka" Version="1.7.0" />
 		<PackageReference Include="librdkafka.redist" Version="1.7.0" />
 	</ItemGroup>
 

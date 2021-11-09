@@ -31,7 +31,7 @@
 		<PackageReference Include="Analogy.LogViewer.Template" Version="1.9.4" />
 		<PackageReference Include="Confluent.Kafka" Version="1.8.2" />
 		<PackageReference Include="librdkafka.redist" Version="1.8.2" />
-		<PackageReference Include="Microsoft.Build.Tasks.Git" Version="1.0.0">
+		<PackageReference Include="Microsoft.Build.Tasks.Git" Version="1.1.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

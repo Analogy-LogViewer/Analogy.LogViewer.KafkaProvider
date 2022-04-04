@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Analogy.LogViewer.Interfaces">
-      <Version>2.15.2</Version>
+      <Version>3.0.1</Version>
     </PackageReference>
     <PackageReference Include="Confluent.Kafka">
       <Version>1.8.2</Version>

@@ -29,7 +29,7 @@
 	<ItemGroup>
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.1.0" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="3.1.0" />
-		<PackageReference Include="Confluent.Kafka" Version="1.8.2" />
+		<PackageReference Include="Confluent.Kafka" Version="1.9.0" />
 		<PackageReference Include="librdkafka.redist" Version="1.9.0" />
 		<PackageReference Include="Microsoft.Build.Tasks.Git" Version="1.1.1">
 			<PrivateAssets>all</PrivateAssets>

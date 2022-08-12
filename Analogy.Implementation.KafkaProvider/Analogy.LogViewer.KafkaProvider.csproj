@@ -7,7 +7,7 @@
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-		<Version>2.1.3</Version>
+		<Version>2.1.4</Version>
 		<Authors>Lior Banai</Authors>
 		<Company>Analogy.LogViewer</Company>
 		<Product>Analogy.LogViewer.KafkaProvider</Product>
@@ -27,10 +27,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.2.3" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="3.2.3" />
-		<PackageReference Include="Confluent.Kafka" Version="1.9.0" />
-		<PackageReference Include="librdkafka.redist" Version="1.9.1" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.2.4" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="3.2.4" />
+		<PackageReference Include="Confluent.Kafka" Version="1.9.2" />
+		<PackageReference Include="librdkafka.redist" Version="1.9.2" />
 		<PackageReference Include="Microsoft.Build.Tasks.Git" Version="1.1.1">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

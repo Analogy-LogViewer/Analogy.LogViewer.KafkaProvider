@@ -52,7 +52,7 @@ namespace Analogy.LogViewer.KafkaProvider.Example
             return Task.CompletedTask;
         }
 
-        public override Task InitializeDataProviderAsync(IAnalogyLogger logger)
+        public override Task InitializeDataProvider(IAnalogyLogger logger)
         {
             Producer = new KafkaProducer<AnalogyLogMessage>(kafkaUrl, topic, new KafkaSerializer<AnalogyLogMessage>());
             Consumer = new KafkaConsumer<AnalogyLogMessage>(groupId, kafkaUrl, topic);
@@ -60,7 +60,7 @@ namespace Analogy.LogViewer.KafkaProvider.Example
             Consumer.OnError += Consumer_OnError;
             sim = new TimerMessagesSimulator(async m => { await Producer.PublishAsync(m); });
             IsConnected = true;
-            return base.InitializeDataProviderAsync(logger);
+            return base.InitializeDataProvider(logger);
         }
 
       

@@ -43,12 +43,12 @@ namespace Analogy.LogViewer.KafkaProvider
         }
 
 
-        public override Task InitializeDataProviderAsync(IAnalogyLogger logger)
+        public override Task InitializeDataProvider(IAnalogyLogger logger)
         {
             Consumer = new KafkaConsumer<AnalogyLogMessage>(groupId, kafkaUrl, topic);
             Consumer.OnMessageReady += Consumer_OnMessageReady;
             IsConnected = true;
-            return base.InitializeDataProviderAsync(logger);
+            return base.InitializeDataProvider(logger);
         }
 
         public override void MessageOpened(AnalogyLogMessage message)

@@ -7,7 +7,7 @@
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-		<Version>2.2.2</Version>
+		<Version>3.4.0</Version>
 		<Authors>Lior Banai</Authors>
 		<Company>Analogy.LogViewer</Company>
 		<Product>Analogy.LogViewer.KafkaProvider</Product>
@@ -21,14 +21,14 @@
 		<RepositoryUrl>https://github.com/Analogy-LogViewer/Analogy.LogViewer.KafkaProvider</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<Nullable>enable</Nullable>
-		<LangVersion>8.0</LangVersion>
+		<LangVersion>latest</LangVersion>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.3.4" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="3.3.3" />
+		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.4.0" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="3.4.0" />
 		<PackageReference Include="Confluent.Kafka" Version="1.9.3" />
 		<PackageReference Include="librdkafka.redist" Version="1.9.2" />
 		<PackageReference Include="Microsoft.Build.Tasks.Git" Version="1.1.1">

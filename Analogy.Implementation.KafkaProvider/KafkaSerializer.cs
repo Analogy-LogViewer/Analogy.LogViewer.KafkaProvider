@@ -1,4 +1,6 @@
-﻿using System;
+﻿#pragma warning disable SYSLIB0011
+
+using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Confluent.Kafka;

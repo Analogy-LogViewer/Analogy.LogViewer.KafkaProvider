@@ -15,6 +15,7 @@ namespace Analogy.LogViewer.KafkaProvider.Example
         public  override Image DisconnectedLargeImage { get; set; } = null;
         public override Image DisconnectedSmallImage { get; set; } = null;
 
+
         public override IAnalogyOfflineDataProvider FileOperationsHandler { get; set; }
         public bool IsConnected { get; private set; }
         public KafkaConsumer<AnalogyLogMessage> Consumer { get; set; }
@@ -51,7 +52,8 @@ namespace Analogy.LogViewer.KafkaProvider.Example
             Consumer.OnError -= Consumer_OnError;
             return Task.CompletedTask;
         }
-
+        public override Task ShutDown() => Task.CompletedTask;
+        
         public override Task InitializeDataProvider(IAnalogyLogger logger)
         {
             Producer = new KafkaProducer<AnalogyLogMessage>(kafkaUrl, topic, new KafkaSerializer<AnalogyLogMessage>());

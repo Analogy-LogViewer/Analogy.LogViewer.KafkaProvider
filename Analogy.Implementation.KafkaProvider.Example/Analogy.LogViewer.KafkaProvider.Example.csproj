@@ -18,7 +18,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.6.0" />
-		<PackageReference Include="Analogy.LogViewer.Template" Version="3.6.0" />
+		<PackageReference Include="Analogy.LogViewer.Template" Version="3.8.0" />
 		<PackageReference Include="Confluent.Kafka" Version="2.0.2" />
 		<PackageReference Include="librdkafka.redist" Version="2.0.2" />
 	</ItemGroup>

@@ -52,7 +52,7 @@ namespace Analogy.LogViewer.KafkaProvider
         }
 
         public override Task ShutDown() => Task.CompletedTask;
-        public override void MessageOpened(AnalogyLogMessage message)
+        public override void MessageOpened(IAnalogyLogMessage message)
         {
             //nop
         }

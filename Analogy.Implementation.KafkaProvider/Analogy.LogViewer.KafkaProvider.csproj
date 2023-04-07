@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net7.0-windows;net6.0-windows;net48;net471</TargetFrameworks>
@@ -29,7 +29,7 @@
 	<ItemGroup>
 		<PackageReference Include="Analogy.LogViewer.Interfaces" Version="3.8.3" />
 		<PackageReference Include="Analogy.LogViewer.Template" Version="3.8.3" />
-		<PackageReference Include="Confluent.Kafka" Version="2.0.2" />
+		<PackageReference Include="Confluent.Kafka" Version="2.1.0" />
 		<PackageReference Include="librdkafka.redist" Version="2.0.2" />
 		<PackageReference Include="Microsoft.Build.Tasks.Git" Version="1.1.1">
 			<PrivateAssets>all</PrivateAssets>

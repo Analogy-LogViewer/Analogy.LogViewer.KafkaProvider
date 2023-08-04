@@ -20,7 +20,7 @@ namespace Analogy.LogViewer.KafkaProvider.Example
 
         public override IEnumerable<IAnalogyChangeLog> ChangeLog { get; set; } = new List<AnalogyChangeLog>
         {
-            new AnalogyChangeLog("Create Initial implementation (example)",AnalogChangeLogType.None, "Lior Banai",new DateTime(2019, 10, 20))
+            new AnalogyChangeLog("Create Initial implementation (example)",AnalogChangeLogType.None, "Lior Banai",new DateTime(2019, 10, 20), "")
         };
 
         public class AnalogyKafkaExampleDataProviderFactory : IAnalogyDataProvidersFactory

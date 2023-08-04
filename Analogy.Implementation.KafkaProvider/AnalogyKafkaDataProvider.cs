@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Threading.Tasks;
 using Analogy.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.LogViewer.KafkaProvider
 {
@@ -20,7 +21,7 @@ namespace Analogy.LogViewer.KafkaProvider
         public string kafkaUrl = "localhost:9092";
         public override Task<bool> CanStartReceiving() => Task.FromResult(IsConnected);
         private Task Consuming;
-        public override bool UseCustomColors { get; set; } = false;
+        public override bool UseCustomColors { get; set; }
         public override IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders()
             => Array.Empty<(string, string)>();
 
@@ -43,7 +44,7 @@ namespace Analogy.LogViewer.KafkaProvider
         }
 
 
-        public override Task InitializeDataProvider(IAnalogyLogger logger)
+        public override Task InitializeDataProvider(ILogger logger)
         {
             Consumer = new KafkaConsumer<AnalogyLogMessage>(groupId, kafkaUrl, topic);
             Consumer.OnMessageReady += Consumer_OnMessageReady;

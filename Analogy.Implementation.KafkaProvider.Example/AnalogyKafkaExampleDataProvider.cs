@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Threading.Tasks;
 using Analogy.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Analogy.LogViewer.KafkaProvider.Example
 {
@@ -54,7 +55,7 @@ namespace Analogy.LogViewer.KafkaProvider.Example
         }
         public override Task ShutDown() => Task.CompletedTask;
         
-        public override Task InitializeDataProvider(IAnalogyLogger logger)
+        public override Task InitializeDataProvider(ILogger logger)
         {
             Producer = new KafkaProducer<AnalogyLogMessage>(kafkaUrl, topic, new KafkaSerializer<AnalogyLogMessage>());
             Consumer = new KafkaConsumer<AnalogyLogMessage>(groupId, kafkaUrl, topic);

@@ -6,7 +6,7 @@ namespace Analogy.LogViewer.KafkaProvider.Example
 {
     public class TimerMessagesSimulator
     {
-        private int messageCount = 0;
+        private int messageCount;
         private readonly Timer SimulateOnlineMessages;
         readonly Random random = new Random();
         readonly Array values = Enum.GetValues(typeof(AnalogyLogLevel));

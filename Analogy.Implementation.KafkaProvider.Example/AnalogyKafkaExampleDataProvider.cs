@@ -11,10 +11,10 @@ namespace Analogy.LogViewer.KafkaProvider.Example
     {
         public override string OptionalTitle { get; set; } = "Real time kafka provider example";
         public override Guid Id { get; set; } = Guid.Parse("F1283D38-01B9-4753-996B-3CEF4312D7E2");
-        public  override Image ConnectedLargeImage { get; set; } = null;
-        public  override Image ConnectedSmallImage { get; set; } = null;
-        public  override Image DisconnectedLargeImage { get; set; } = null;
-        public override Image DisconnectedSmallImage { get; set; } = null;
+        public  override Image ConnectedLargeImage { get; set; }
+        public  override Image ConnectedSmallImage { get; set; }
+        public  override Image DisconnectedLargeImage { get; set; }
+        public override Image DisconnectedSmallImage { get; set; }
 
 
         public override IAnalogyOfflineDataProvider FileOperationsHandler { get; set; }
@@ -28,7 +28,7 @@ namespace Analogy.LogViewer.KafkaProvider.Example
         public override Task<bool> CanStartReceiving() => Task.FromResult(IsConnected);
         private TimerMessagesSimulator sim;
         private Task Consuming;
-        public override bool UseCustomColors { get; set; } = false;
+        public override bool UseCustomColors { get; set; }
         public override IEnumerable<(string originalHeader, string replacementHeader)> GetReplacementHeaders()
             => Array.Empty<(string, string)>();
 
